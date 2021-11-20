@@ -1,0 +1,26 @@
+{
+  "adjectives": {
+    "1st": {
+      "rose": {
+        "singular": {
+          "nominative": "rosa",
+          "genetive": "rosae",
+          "dative": "rosae",
+          "accusative": "rosam",
+          "ablative": "rosā"
+        },
+        "plural": {
+          "nominative": "rosae",
+          "gentive": "rosārum",
+          "dative": "rosīs",
+          "accsative": "rosās",
+          "ablative": "rosīs"
+        }
+      }
+    },
+    "2nd": {},
+    "3nd": {},
+    "4th": {},
+    "5th": {}
+  }
+}
