@@ -91,6 +91,10 @@ export default function Game() {
   const onTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTextInput(e.target.value);
   };
+  const addInput = (char: "ā" | "ē" | "ī" | "ō") => {
+    // error checking on max lenght but rn its whatever
+    setTextInput((prev) => prev.concat(char));
+  };
 
   return (
     <>
@@ -104,6 +108,19 @@ export default function Game() {
           onChange={onTextChange}
           type="text"
         />
+
+        <button type="button" onClick={() => addInput("ā")}>
+          ā
+        </button>
+        <button type="button" onClick={() => addInput("ē")}>
+          ē
+        </button>
+        <button type="button" onClick={() => addInput("ī")}>
+          ī
+        </button>
+        <button type="button" onClick={() => addInput("ō")}>
+          ō
+        </button>
         <button
           type="submit"
           className="p-2 my-6 text-2xl border-2 border-black border-solid rounded-md"
