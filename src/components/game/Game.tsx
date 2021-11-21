@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import SpecialCharacters from "../wrappers/SpecialCharacters";
 import Question from "./Question";
+
 const nouns: any = {
   first: [
     {
@@ -52,8 +53,7 @@ export default function Game() {
   const [textInput, setTextInput] = useState("");
   const [data, setData] = useState(nouns.first[0]);
   const [round, setRound] = useState(9);
-  // const [number, setNumber] = useState("singular");
-  const [answer, setAnswer] = useState({ case: "", answer: "" });
+  const [answer, setAnswer] = useState({ case: "", answer: "", number: "" });
 
   useEffect(() => {
     // runs on new rounds
@@ -62,20 +62,20 @@ export default function Game() {
     if (round >= 10) {
       const currentCase = Object.keys(data.conjugation.singular)[0];
       const answer = data.conjugation.singular[currentCase];
-      setAnswer({ case: currentCase, answer: answer });
+      setAnswer({ case: currentCase, answer: answer, number: "singular" });
       setRound(0);
       console.log("round 12", currentCase, answer);
     } else if (round >= 5) {
       const currentCase = Object.keys(data.conjugation.plural)[round - 5];
       const answer = data.conjugation.plural[currentCase];
-      setAnswer({ case: currentCase, answer: answer });
+      setAnswer({ case: currentCase, answer: answer, number: "plural" });
       console.log(currentCase, answer);
     } else {
       // key for the current round
       console.log(round);
       const currentCase = Object.keys(data.conjugation.singular)[round];
       const answer = data.conjugation.singular[currentCase];
-      setAnswer({ case: currentCase, answer: answer });
+      setAnswer({ case: currentCase, answer: answer, number: "singular" });
       console.log(currentCase, answer);
     }
   }, [round]);
@@ -99,8 +99,12 @@ export default function Game() {
 
   return (
     <>
-      <Question />
-
+      <Question
+        case={answer.case}
+        number={answer.number}
+        word={data.word}
+        answer={answer.answer}
+      />
       <form onSubmit={submitForm} className="flex flex-col">
         <input
           className="p-3 mt-4 mb-6 text-gray-600 border-2 border-black rounded-md focus-within:border-gray-200"
@@ -111,7 +115,6 @@ export default function Game() {
         />
 
         <SpecialCharacters addInput={addInput} />
-
         <button
           type="submit"
           className="p-2 my-6 text-2xl border-2 border-black border-solid rounded-md"

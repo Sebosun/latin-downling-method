@@ -24,7 +24,7 @@ const dummyData = {
 function App() {
   return (
     <div className="flex flex-col items-center justify-center h-full  bg-gradient-to-r from-sky-600 to-sky-500 ">
-      <main>
+      <main className="w-full max-w-xs lg:max-w-l">
         <Game />
         <Stats />
       </main>
