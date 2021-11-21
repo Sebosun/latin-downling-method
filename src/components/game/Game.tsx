@@ -109,18 +109,36 @@ export default function Game() {
           type="text"
         />
 
-        <button type="button" onClick={() => addInput("ā")}>
-          ā
-        </button>
-        <button type="button" onClick={() => addInput("ē")}>
-          ē
-        </button>
-        <button type="button" onClick={() => addInput("ī")}>
-          ī
-        </button>
-        <button type="button" onClick={() => addInput("ō")}>
-          ō
-        </button>
+        <div className="flex flex-wrap  justify-between ">
+          <button
+            type="button"
+            className="text-xl border-2 rounded-xl w-12 hover:bg-sky-300 border-black p-1"
+            onClick={() => addInput("ā")}
+          >
+            ā
+          </button>
+          <button
+            type="button"
+            className="text-xl border-2 rounded-xl w-12 hover:bg-sky-300 border-black p-1"
+            onClick={() => addInput("ē")}
+          >
+            ē
+          </button>
+          <button
+            type="button"
+            className="text-xl border-2 rounded-xl w-12 hover:bg-sky-300 border-black p-1"
+            onClick={() => addInput("ī")}
+          >
+            ī
+          </button>
+          <button
+            type="button"
+            className="text-xl border-2 rounded-xl w-12 hover:bg-sky-300 border-black p-1"
+            onClick={() => addInput("ō")}
+          >
+            ō
+          </button>
+        </div>
         <button
           type="submit"
           className="p-2 my-6 text-2xl border-2 border-black border-solid rounded-md"
