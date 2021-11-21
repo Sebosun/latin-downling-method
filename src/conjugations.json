@@ -1,6 +1,6 @@
 {
-  "adjectives": {
-    "1st": {
+  "nouns": {
+    "first": {
       "rose": {
         "singular": {
           "nominative": "rosa",
@@ -17,10 +17,6 @@
           "ablative": "rosīs"
         }
       }
-    },
-    "2nd": {},
-    "3nd": {},
-    "4th": {},
-    "5th": {}
+    }
   }
 }

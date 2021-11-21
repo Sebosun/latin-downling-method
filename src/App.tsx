@@ -1,5 +1,6 @@
 import Game from "./components/game/Game";
 import Stats from "./components/stats/Stats";
+import data from "./conjugations.json";
 
 const dummyData = {
   rose: {
