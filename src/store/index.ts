@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import settingsReducer from "./slices/stats";
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    stats: settingsReducer,
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;

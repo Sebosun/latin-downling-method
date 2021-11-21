@@ -21,8 +21,6 @@ const dummyData = {
 };
 
 function App() {
-  // const ref = useRef<HTMLInputElement>(null);
-
   return (
     <div className="flex flex-col items-center justify-center h-full  bg-gradient-to-r from-sky-600 to-sky-500 ">
       <main>

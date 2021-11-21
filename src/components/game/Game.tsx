@@ -3,6 +3,7 @@ import Question from "./Question";
 
 export default function Game() {
   const ref = useRef<HTMLInputElement | null>(null);
+
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!ref.current) throw new Error("Ref is empty");
