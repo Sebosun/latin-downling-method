@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useAppDispatch } from "../../store/hooks";
+import { addError, addSuccess } from "../../store/slices/stats";
 import SpecialCharacters from "../wrappers/SpecialCharacters";
 import Question from "./Question";
 
@@ -54,7 +56,14 @@ export default function Game() {
   const [data, setData] = useState(nouns.first[0]);
   const [round, setRound] = useState(9);
   const [answer, setAnswer] = useState({ case: "", answer: "", number: "" });
+  const [showAnswer, setShowAnswer] = useState(false);
+  const dispatch = useAppDispatch();
 
+  const handleShowAnswer = () => {
+    // using space adds one space to the input, trimming it here
+    setTextInput((prev) => prev.trim());
+    setShowAnswer(true);
+  };
   useEffect(() => {
     // runs on new rounds
     // some function to calculate number of rounds later
@@ -82,9 +91,14 @@ export default function Game() {
 
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (textInput === answer.answer) {
-      console.log("Add Score");
+    if (textInput.trim() === answer.answer && !showAnswer) {
       setRound((prev) => prev + 1);
+      dispatch(addSuccess());
+      setShowAnswer(false);
+    } else {
+      setRound((prev) => prev + 1);
+      dispatch(addError());
+      setShowAnswer(false);
     }
     setTextInput("");
   };
@@ -104,6 +118,8 @@ export default function Game() {
         number={answer.number}
         word={data.word}
         answer={answer.answer}
+        showAnswer={showAnswer}
+        handleShowAnswer={handleShowAnswer}
       />
 
       <form onSubmit={submitForm} className="flex flex-col">
