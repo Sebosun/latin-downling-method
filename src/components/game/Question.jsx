@@ -1,13 +1,10 @@
-import React, { ReactElement } from "react";
+import useKeypress from "react-use-keypress";
 
-interface QuestionTypes {
-  case: string;
-  number: string;
-  word: string;
-  answer: string;
-}
+export default function Question(props) {
+  useKeypress(" ", () => {
+    console.log("Space pressed");
+  });
 
-export default function Question(props: QuestionTypes) {
   return (
     <div className="text-3xl grid items-center grid-rows-3">
       <p className="text-center capitalize">
@@ -17,6 +14,7 @@ export default function Question(props: QuestionTypes) {
       <p className=" text-center">
         of <span className="capitalize">{props.word}</span>
       </p>
+      <p className="tet-gray-400">Use space to show answer</p>
     </div>
   );
 }

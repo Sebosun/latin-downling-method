@@ -105,6 +105,7 @@ export default function Game() {
         word={data.word}
         answer={answer.answer}
       />
+
       <form onSubmit={submitForm} className="flex flex-col">
         <input
           className="p-3 mt-4 mb-6 text-gray-600 border-2 border-black rounded-md focus-within:border-gray-200"
