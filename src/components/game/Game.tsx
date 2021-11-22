@@ -1,20 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { addError, addSuccess } from "../../store/slices/stats";
-import { changeWord } from "../../store/slices/game";
 import SpecialCharacters from "../wrappers/SpecialCharacters";
 import Question from "./Question";
 export default function Game() {
   const [textInput, setTextInput] = useState("");
 
-  const { currentWord } = useAppSelector((state) => state.game);
   //any for now
   // const [data, setData] = useState<any>(currentWord);
-  const data: any = currentWord;
+
+  const data = useAppSelector((state) => state.game.currentWord);
+  const dispatch = useAppDispatch();
+
   const [round, setRound] = useState(0);
   const [answer, setAnswer] = useState({ case: "", answer: "", number: "" });
   const [showAnswer, setShowAnswer] = useState(false);
-  const dispatch = useAppDispatch();
 
   const handleShowAnswer = () => {
     // using space adds one space to the input, trimming it here
@@ -33,6 +33,7 @@ export default function Game() {
     // runs on new rounds
     // some function to calculate number of rounds later
     // if then rounds end load another word/restart
+    console.log(data);
     if (round >= 10) {
       const currentCase = Object.keys(data.conjugation.singular)[0];
       const answer = data.conjugation.singular[currentCase];
@@ -52,7 +53,7 @@ export default function Game() {
       setAnswer({ case: currentCase, answer: answer, number: "singular" });
       console.log(currentCase, answer);
     }
-  }, [round]);
+  }, [round, data]);
 
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

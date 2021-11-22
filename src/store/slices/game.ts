@@ -1,26 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface initialState {}
+interface initialState {
+  currentWord: any;
+  wordQueue: [];
+}
 
-const initialState = {
+const initialState: initialState = {
   currentWord: {
-    word: "rose",
-    type: "noun",
-    declension: "first",
+    word: "",
+    type: "",
+    declension: "",
     conjugation: {
       singular: {
-        nominative: "rosa",
-        genetive: "rosae",
-        dative: "rosae",
-        accusative: "rosam",
-        ablative: "rosā",
+        nominative: "",
+        genetive: "",
+        dative: "",
+        accusative: "",
+        ablative: "",
       },
       plural: {
-        nominative: "rosae",
-        genetive: "rosārum",
-        dative: "rosīs",
-        accusative: "rosās",
-        ablative: "rosīs",
+        nominative: "",
+        genetive: "",
+        dative: "",
+        accusative: "",
+        ablative: "",
       },
     },
   },

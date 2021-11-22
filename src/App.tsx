@@ -1,24 +1,6 @@
 import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
 import Main from "./components/pages/Main";
-
-const dummyData = {
-  rose: {
-    singular: {
-      nominative: "rosa",
-      genetive: "rosae",
-      dative: "rosae",
-      accusative: "rosam",
-      ablative: "rosā",
-    },
-    plural: {
-      nominative: "rosae",
-      gentive: "rosārum",
-      dative: "rosīs",
-      accsative: "rosās",
-      ablative: "rosīs",
-    },
-  },
-};
+import FetchData from "./FetchData";
 
 function App() {
   return (
@@ -27,6 +9,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/options" element={<p>Dupa for now</p>} />
       </Routes>
+      <FetchData />
     </div>
   );
 }

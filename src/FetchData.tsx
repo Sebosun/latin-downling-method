@@ -49,6 +49,30 @@ const nouns: any = {
       },
     },
   ],
+  second: [
+    {
+      word: "body",
+      type: "noun",
+      declension: "third",
+      gender: "neuter",
+      conjugation: {
+        singular: {
+          nominative: "corpus	",
+          genetive: "corporis",
+          dative: "corporī",
+          accusative: "corpus",
+          ablative: "corpore",
+        },
+        plural: {
+          nominative: "corpora",
+          genetive: "corporum",
+          dative: "corporibus",
+          accusative: "corpora",
+          ablative: "corporibus",
+        },
+      },
+    },
+  ],
   third: [
     {
       word: "sheep",
@@ -69,6 +93,28 @@ const nouns: any = {
           dative: "ovibus",
           accusative: "ovīs/ovēs",
           ablative: "ovibus",
+        },
+      },
+    },
+    {
+      word: "king",
+      type: "noun",
+      declension: "third",
+      gender: "masculine",
+      conjugation: {
+        singular: {
+          nominative: "rēx",
+          genetive: "rēgis",
+          dative: "rēgī",
+          accusative: "rēgem",
+          ablative: "rēge",
+        },
+        plural: {
+          nominative: "rēgēs",
+          genetive: "rēgum",
+          dative: "rēgibus",
+          accusative: "rēgēs",
+          ablative: "rēgibus",
         },
       },
     },
