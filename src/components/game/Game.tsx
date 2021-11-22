@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useAppDispatch } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { addError, addSuccess } from "../../store/slices/stats";
+import { changeWord } from "../../store/slices/game";
 import SpecialCharacters from "../wrappers/SpecialCharacters";
 import Question from "./Question";
 
@@ -10,6 +11,7 @@ const nouns: any = {
       word: "rose",
       type: "noun",
       declension: "first",
+      gender: "femine",
       conjugation: {
         singular: {
           nominative: "rosa",
@@ -31,6 +33,7 @@ const nouns: any = {
       word: "girl",
       type: "noun",
       declension: "first",
+      gender: "feminie",
       conjugation: {
         singular: {
           nominative: "puella",
@@ -49,11 +52,39 @@ const nouns: any = {
       },
     },
   ],
+  third: [
+    {
+      word: "sheep",
+      type: "noun",
+      declension: "third",
+      gender: "feminine",
+      conjugation: {
+        singular: {
+          nominative: "ovis",
+          genetive: "ovis",
+          dative: "ovī",
+          accusative: "ovem",
+          ablative: "ove",
+        },
+        plural: {
+          nominative: "ovēs",
+          genetive: "ovium",
+          dative: "ovibus",
+          accusative: "ovīs/ovēs",
+          ablative: "ovibus",
+        },
+      },
+    },
+  ],
 };
 
 export default function Game() {
   const [textInput, setTextInput] = useState("");
-  const [data, setData] = useState(nouns.first[0]);
+
+  const { currentWord } = useAppSelector((state) => state.game);
+  //any for now
+  // const [data, setData] = useState<any>(currentWord);
+  const data: any = currentWord;
   const [round, setRound] = useState(9);
   const [answer, setAnswer] = useState({ case: "", answer: "", number: "" });
   const [showAnswer, setShowAnswer] = useState(false);
@@ -103,6 +134,10 @@ export default function Game() {
     setTextInput("");
   };
 
+  const justDispatchItDoode = () => {
+    dispatch(changeWord(nouns.third[0]));
+  };
+
   const onTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTextInput(e.target.value);
   };
@@ -139,6 +174,7 @@ export default function Game() {
           Check
         </button>
       </form>
+      <button onClick={justDispatchItDoode}>Here</button>
     </>
   );
 }
