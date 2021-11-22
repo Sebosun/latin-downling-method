@@ -85,7 +85,7 @@ export default function Game() {
   //any for now
   // const [data, setData] = useState<any>(currentWord);
   const data: any = currentWord;
-  const [round, setRound] = useState(9);
+  const [round, setRound] = useState(0);
   const [answer, setAnswer] = useState({ case: "", answer: "", number: "" });
   const [showAnswer, setShowAnswer] = useState(false);
   const dispatch = useAppDispatch();
@@ -135,7 +135,16 @@ export default function Game() {
   };
 
   const justDispatchItDoode = () => {
-    dispatch(changeWord(nouns.third[0]));
+    const keys = Object.keys(nouns);
+    const randomKey = keys[Math.floor(Math.random() * keys.length)];
+
+    const randomDeclension = nouns[randomKey];
+    const randomNounLenght = Math.floor(
+      Math.random() * randomDeclension.length
+    );
+    const randomNoun = randomDeclension[randomNounLenght];
+
+    dispatch(changeWord(randomNoun));
   };
 
   const onTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
