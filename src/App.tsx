@@ -1,6 +1,5 @@
-import Game from "./components/game/Game";
-import Stats from "./components/stats/Stats";
-import data from "./conjugations.json";
+import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
+import Main from "./components/pages/Main";
 
 const dummyData = {
   rose: {
@@ -24,10 +23,10 @@ const dummyData = {
 function App() {
   return (
     <div className="flex flex-col items-center justify-center h-full  bg-gradient-to-r from-sky-600 to-sky-500 ">
-      <main className="w-full max-w-xs lg:max-w-l">
-        <Game />
-        <Stats />
-      </main>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/options" element={<p>Dupa for now</p>} />
+      </Routes>
     </div>
   );
 }
