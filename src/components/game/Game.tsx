@@ -122,14 +122,18 @@ export default function Game() {
 
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (textInput.trim() === answer.answer && !showAnswer) {
-      setRound((prev) => prev + 1);
-      dispatch(addSuccess());
-      setShowAnswer(false);
+    if (textInput.trim() === answer.answer) {
+      if (showAnswer) {
+        setShowAnswer(false);
+        setRound((prev) => prev + 1);
+      } else {
+        setRound((prev) => prev + 1);
+        dispatch(addSuccess());
+        setShowAnswer(false);
+      }
     } else {
-      setRound((prev) => prev + 1);
+      setShowAnswer(true);
       dispatch(addError());
-      setShowAnswer(false);
     }
     setTextInput("");
   };
