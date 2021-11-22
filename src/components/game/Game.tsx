@@ -4,80 +4,6 @@ import { addError, addSuccess } from "../../store/slices/stats";
 import { changeWord } from "../../store/slices/game";
 import SpecialCharacters from "../wrappers/SpecialCharacters";
 import Question from "./Question";
-
-const nouns: any = {
-  first: [
-    {
-      word: "rose",
-      type: "noun",
-      declension: "first",
-      gender: "femine",
-      conjugation: {
-        singular: {
-          nominative: "rosa",
-          genetive: "rosae",
-          dative: "rosae",
-          accusative: "rosam",
-          ablative: "rosā",
-        },
-        plural: {
-          nominative: "rosae",
-          genetive: "rosārum",
-          dative: "rosīs",
-          accusative: "rosās",
-          ablative: "rosīs",
-        },
-      },
-    },
-    {
-      word: "girl",
-      type: "noun",
-      declension: "first",
-      gender: "feminie",
-      conjugation: {
-        singular: {
-          nominative: "puella",
-          genetive: "puellae",
-          dative: "puellae",
-          accusative: "puellam",
-          ablative: "puellā",
-        },
-        plural: {
-          nominative: "puellae",
-          genetive: "puellārum",
-          dative: "puellīs",
-          accusative: "puellās",
-          ablative: "puellīs",
-        },
-      },
-    },
-  ],
-  third: [
-    {
-      word: "sheep",
-      type: "noun",
-      declension: "third",
-      gender: "feminine",
-      conjugation: {
-        singular: {
-          nominative: "ovis",
-          genetive: "ovis",
-          dative: "ovī",
-          accusative: "ovem",
-          ablative: "ove",
-        },
-        plural: {
-          nominative: "ovēs",
-          genetive: "ovium",
-          dative: "ovibus",
-          accusative: "ovīs/ovēs",
-          ablative: "ovibus",
-        },
-      },
-    },
-  ],
-};
-
 export default function Game() {
   const [textInput, setTextInput] = useState("");
 
@@ -92,9 +18,17 @@ export default function Game() {
 
   const handleShowAnswer = () => {
     // using space adds one space to the input, trimming it here
-    setTextInput((prev) => prev.trim());
-    setShowAnswer(true);
+    // double space skips the question
+    if (showAnswer === true) {
+      setRound((prev) => prev + 1);
+      dispatch(addError());
+      setShowAnswer(false);
+    } else {
+      setTextInput((prev) => prev.trim());
+      setShowAnswer(true);
+    }
   };
+
   useEffect(() => {
     // runs on new rounds
     // some function to calculate number of rounds later
@@ -138,19 +72,6 @@ export default function Game() {
     setTextInput("");
   };
 
-  const justDispatchItDoode = () => {
-    const keys = Object.keys(nouns);
-    const randomKey = keys[Math.floor(Math.random() * keys.length)];
-
-    const randomDeclension = nouns[randomKey];
-    const randomNounLenght = Math.floor(
-      Math.random() * randomDeclension.length
-    );
-    const randomNoun = randomDeclension[randomNounLenght];
-
-    dispatch(changeWord(randomNoun));
-  };
-
   const onTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTextInput(e.target.value);
   };
@@ -173,6 +94,7 @@ export default function Game() {
       <form onSubmit={submitForm} className="flex flex-col">
         <input
           className="p-3 mt-4 mb-6 text-gray-600 border-2 border-black rounded-md focus-within:border-gray-200"
+          autoFocus
           maxLength={25}
           value={textInput}
           onChange={onTextChange}
@@ -187,7 +109,6 @@ export default function Game() {
           Check
         </button>
       </form>
-      <button onClick={justDispatchItDoode}>Here</button>
     </>
   );
 }
