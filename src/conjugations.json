@@ -17,6 +17,77 @@
           "ablative": "rosīs"
         }
       }
-    }
+    },
+    "second": [
+      {
+        "word": "gift",
+        "declension": "second",
+        "gender": "neuter",
+        "type": "noun",
+        "conjugations": {
+          "singular": {
+            "nominative": "dōnum",
+            "genetive": "dōnī",
+            "dative": "dōnō",
+            "accusative": "dōnum",
+            "ablative": "dōnō"
+          },
+          "plural": {
+            "nominative": "dōna",
+            "genetive": "dōnōrum",
+            "dative": "dōnīs",
+            "accusative": "dōna",
+            "ablative": "dōnīs"
+          }
+        }
+      }
+    ],
+    "third": [
+      {
+        "word": "king",
+        "declension": "third",
+        "gender": "masculine",
+        "type": "noun",
+        "conjugation": {
+          "singuar": {
+            "nominative": "rēx",
+            "genetive": "rēgis",
+            "dative": "rēgī",
+            "accusative": "rēgem",
+            "ablative": "rēge"
+          },
+          "plural": {
+            "nominative": "rēgēs",
+            "genetive": "rēgum",
+            "dative": "rēgibus",
+            "accusative": "rēgēs",
+            "ablative": "rēgibus"
+          }
+        }
+      },
+
+      {
+        "word": "city",
+        "declension": "third",
+        "gender": "feminine",
+        "type": "noun",
+        "conjugations": {
+          "singular": {
+            "nominative": "urbs",
+            "genetive": "urbis",
+            "dative": "urbī",
+            "accusative": "urbem",
+            "ablative": "urbe"
+          },
+          "plural": {
+            "nominative": "urbēs",
+            "genetive": "urbium",
+            "dative": "urbibus",
+            "accusative": "urbīs/urbēs",
+            "ablative": "urbibus"
+          }
+        }
+      }
+    ]
   }
 }

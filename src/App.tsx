@@ -4,7 +4,7 @@ import FetchData from "./FetchData";
 
 function App() {
   return (
-    <div className="flex flex-col items-center justify-center h-full  bg-gradient-to-r from-sky-600 to-sky-500 ">
+    <div className="flex flex-col items-center justify-center h-full  bg-gray-300">
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/options" element={<p>Dupa for now</p>} />
