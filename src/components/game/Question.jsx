@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import useKeypress from "react-use-keypress";
 
 export default function Question(props) {

@@ -1,13 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { addError, addSuccess } from "../../store/slices/stats";
+import { addError, addSuccess, addComplete } from "../../store/slices/stats";
 import SpecialCharacters from "../wrappers/SpecialCharacters";
 import Question from "./Question";
+
 export default function Game() {
   const [textInput, setTextInput] = useState("");
-
-  //any for now
-  // const [data, setData] = useState<any>(currentWord);
 
   // TODO settings somewhere to:
   // disable space to show the answer (change text then maybe)
@@ -17,6 +15,7 @@ export default function Game() {
   const dispatch = useAppDispatch();
 
   const [round, setRound] = useState(0);
+  const [full, setFull] = useState(true);
   const [answer, setAnswer] = useState({ case: "", answer: "", number: "" });
   const [showAnswer, setShowAnswer] = useState(false);
 
@@ -28,7 +27,9 @@ export default function Game() {
       const currentCase = Object.keys(data.conjugation.singular)[0];
       const answer = data.conjugation.singular[currentCase];
       setAnswer({ case: currentCase, answer: answer, number: "singular" });
+      full && dispatch(addComplete());
       setRound(0);
+      setFull(true);
     } else if (round >= 5) {
       const currentCase = Object.keys(data.conjugation.plural)[round - 5];
       const answer = data.conjugation.plural[currentCase];
@@ -43,19 +44,25 @@ export default function Game() {
   }, [round, data]);
 
   const submitLogic = () => {
+    // if the answer was correct
     if (textInput.trim() === answer.answer.trim()) {
+      // if we failed/revealed an answer already
       if (showAnswer) {
         setRound((prev) => prev + 1);
         setShowAnswer(false);
+        // if the answer was correct
       } else {
         setRound((prev) => prev + 1);
         dispatch(addSuccess());
         setShowAnswer(false);
       }
+      //if we fail / click to reveal an answer
     } else {
       setShowAnswer(true);
+      setFull(false);
       dispatch(addError());
     }
+
     setTextInput("");
   };
 

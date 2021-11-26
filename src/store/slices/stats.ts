@@ -3,11 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 interface statsTypes {
   success: number;
   error: number;
+  complete: number;
 }
 
 const initialState: statsTypes = {
   success: 0,
   error: 0,
+  complete: 0,
 };
 
 const statsSlice = createSlice({
@@ -20,8 +22,11 @@ const statsSlice = createSlice({
     addError(state) {
       state.error++;
     },
+    addComplete(state) {
+      state.complete++;
+    },
   },
 });
 
-export const { addSuccess, addError } = statsSlice.actions;
+export const { addSuccess, addError, addComplete } = statsSlice.actions;
 export default statsSlice.reducer;
