@@ -9,6 +9,10 @@ export default function Game() {
   //any for now
   // const [data, setData] = useState<any>(currentWord);
 
+  // TODO settings somewhere to:
+  // disable space to show the answer (change text then maybe)
+  // being more forgvigin wiht the ī ō etc.
+
   const data = useAppSelector((state) => state.game.currentWord);
   const dispatch = useAppDispatch();
 
@@ -16,51 +20,33 @@ export default function Game() {
   const [answer, setAnswer] = useState({ case: "", answer: "", number: "" });
   const [showAnswer, setShowAnswer] = useState(false);
 
-  const handleShowAnswer = () => {
-    // using space adds one space to the input, trimming it here
-    // double space skips the question
-    if (showAnswer === true) {
-      setRound((prev) => prev + 1);
-      dispatch(addError());
-      setShowAnswer(false);
-    } else {
-      setTextInput((prev) => prev.trim());
-      setShowAnswer(true);
-    }
-  };
-
   useEffect(() => {
     // runs on new rounds
     // some function to calculate number of rounds later
     // if then rounds end load another word/restart
-    console.log(data);
     if (round >= 10) {
       const currentCase = Object.keys(data.conjugation.singular)[0];
       const answer = data.conjugation.singular[currentCase];
       setAnswer({ case: currentCase, answer: answer, number: "singular" });
       setRound(0);
-      console.log("round 12", currentCase, answer);
     } else if (round >= 5) {
       const currentCase = Object.keys(data.conjugation.plural)[round - 5];
       const answer = data.conjugation.plural[currentCase];
       setAnswer({ case: currentCase, answer: answer, number: "plural" });
-      console.log(currentCase, answer);
     } else {
       // key for the current round
       console.log(round);
       const currentCase = Object.keys(data.conjugation.singular)[round];
       const answer = data.conjugation.singular[currentCase];
       setAnswer({ case: currentCase, answer: answer, number: "singular" });
-      console.log(currentCase, answer);
     }
   }, [round, data]);
 
-  const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (textInput.trim() === answer.answer) {
+  const submitLogic = () => {
+    if (textInput.trim() === answer.answer.trim()) {
       if (showAnswer) {
-        setShowAnswer(false);
         setRound((prev) => prev + 1);
+        setShowAnswer(false);
       } else {
         setRound((prev) => prev + 1);
         dispatch(addSuccess());
@@ -73,9 +59,19 @@ export default function Game() {
     setTextInput("");
   };
 
+  const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    submitLogic();
+  };
+
   const onTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTextInput(e.target.value);
   };
+
+  const handleShowAnswer = () => {
+    submitLogic();
+  };
+
   const addInput = (char: "ā" | "ē" | "ī" | "ō") => {
     // error checking on max lenght but rn its whatever
     setTextInput((prev) => prev.concat(char));

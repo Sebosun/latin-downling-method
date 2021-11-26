@@ -2,6 +2,7 @@ import { useAppSelector } from "../../store/hooks";
 
 export default function Stats() {
   const { success, error } = useAppSelector((state) => state.stats);
+  // TODO if full set is done without errors note that too
   return (
     <div className="flex text-2xl justify-around">
       <div className="flex justify-start gap-4">
