@@ -37,7 +37,7 @@ export default function Options(): ReactElement | null {
   console.log(parsed, keys);
   return (
     <main className="w-full   bg-gray-100 rounded-2xl shadow-l text-gray-800 p-4">
-      <div className="flex flex-col">
+      <div className="lg:flex  gap-5 text-2xl justify-center">
         {keys.map((item) => {
           return (
             <ul>
@@ -68,7 +68,15 @@ const DisplayMore = ({ name, item }: DisplayTypes): ReactElement => {
   };
 
   const mapped = item?.map((item) => {
-    return <li onClick={() => setAsCurrent(item)}>{item.word}</li>;
+    return (
+      <li
+        role="button"
+        className="hover:border-sky-500 border-t-2 border-b-2  border-transparent"
+        onClick={() => setAsCurrent(item)}
+      >
+        {item.word}
+      </li>
+    );
   });
 
   const handleShow = () => {
@@ -79,12 +87,12 @@ const DisplayMore = ({ name, item }: DisplayTypes): ReactElement => {
   return (
     <>
       <button
-        className=" border-b-2 border-sky-600 hover:bg-sky-400  my-2 p-1"
+        className="border-b-2 border-sky-600 hover:bg-sky-400 my-2 p-1"
         onClick={handleShow}
       >
         {name}
       </button>
-      {show && <ul className="mx-2">{mapped}</ul>}
+      {show && <ul className="text-xl  lg:text-center">{mapped}</ul>}
     </>
   );
 };
