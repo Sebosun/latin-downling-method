@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { addError, addSuccess, addComplete } from "../../store/slices/stats";
+import { ConjugationTypes } from "../pages/Options";
 import SpecialCharacters from "../wrappers/SpecialCharacters";
 import Question from "./Question";
 
@@ -19,26 +20,27 @@ export default function Game() {
   const [answer, setAnswer] = useState({ case: "", answer: "", number: "" });
   const [showAnswer, setShowAnswer] = useState(false);
 
+  // runs on new rounds
+  // some function to calculate number of rounds later
+  // if then rounds end load another word/restart
   useEffect(() => {
-    // runs on new rounds
-    // some function to calculate number of rounds later
-    // if then rounds end load another word/restart
     if (round >= 10) {
-      const currentCase = Object.keys(data.conjugation.singular)[0];
-      const answer = data.conjugation.singular[currentCase];
+      const currentCase = Object.keys(data.conjugations.singular)[0];
+      const answer =
+        data.conjugations.plural[currentCase as keyof ConjugationTypes];
       setAnswer({ case: currentCase, answer: answer, number: "singular" });
       full && dispatch(addComplete());
       setRound(0);
       setFull(true);
     } else if (round >= 5) {
-      const currentCase = Object.keys(data.conjugation.plural)[round - 5];
-      const answer = data.conjugation.plural[currentCase];
+      const currentCase = Object.keys(data.conjugations.plural)[round - 5];
+      const answer =
+        data.conjugations.plural[currentCase as keyof ConjugationTypes];
       setAnswer({ case: currentCase, answer: answer, number: "plural" });
     } else {
-      // key for the current round
-      console.log(round);
-      const currentCase = Object.keys(data.conjugation.singular)[round];
-      const answer = data.conjugation.singular[currentCase];
+      const currentCase = Object.keys(data.conjugations.singular)[round];
+      const answer =
+        data.conjugations.plural[currentCase as keyof ConjugationTypes];
       setAnswer({ case: currentCase, answer: answer, number: "singular" });
     }
   }, [round, data]);
@@ -71,12 +73,13 @@ export default function Game() {
     submitLogic();
   };
 
-  const onTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTextInput(e.target.value);
-  };
-
+  // runs on spacebar clicks
   const handleShowAnswer = () => {
     submitLogic();
+  };
+
+  const onTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTextInput(e.target.value);
   };
 
   const addInput = (char: "ā" | "ē" | "ī" | "ō") => {
@@ -104,7 +107,6 @@ export default function Game() {
           onChange={onTextChange}
           type="text"
         />
-
         <SpecialCharacters addInput={addInput} />
         <button
           type="submit"

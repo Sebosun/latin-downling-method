@@ -1,16 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { NounTypes } from "../../components/pages/Options";
 
 interface initialState {
-  currentWord: any;
+  currentWord: NounTypes;
   wordQueue: [];
 }
 
 const initialState: initialState = {
   currentWord: {
     word: "",
-    type: "",
-    declension: "",
-    conjugation: {
+    gender: "",
+    conjugations: {
       singular: {
         nominative: "",
         genetive: "",

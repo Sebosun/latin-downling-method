@@ -1,29 +1,31 @@
 {
   "nouns": {
-    "first": {
-      "rose": {
-        "singular": {
-          "nominative": "rosa",
-          "genetive": "rosae",
-          "dative": "rosae",
-          "accusative": "rosam",
-          "ablative": "rosā"
-        },
-        "plural": {
-          "nominative": "rosae",
-          "gentive": "rosārum",
-          "dative": "rosīs",
-          "accsative": "rosās",
-          "ablative": "rosīs"
+    "first": [
+      {
+        "word": "rose",
+        "gender": "feminine",
+        "conjugations": {
+          "singular": {
+            "nominative": "rosa",
+            "genetive": "rosae",
+            "dative": "rosae",
+            "accusative": "rosam",
+            "ablative": "rosā"
+          },
+          "plural": {
+            "nominative": "rosae",
+            "genetive": "rosārum",
+            "dative": "rosīs",
+            "accusative": "rosam",
+            "ablative": "rosīs"
+          }
         }
       }
-    },
+    ],
     "second": [
       {
         "word": "gift",
-        "declension": "second",
         "gender": "neuter",
-        "type": "noun",
         "conjugations": {
           "singular": {
             "nominative": "dōnum",
@@ -38,53 +40,6 @@
             "dative": "dōnīs",
             "accusative": "dōna",
             "ablative": "dōnīs"
-          }
-        }
-      }
-    ],
-    "third": [
-      {
-        "word": "king",
-        "declension": "third",
-        "gender": "masculine",
-        "type": "noun",
-        "conjugation": {
-          "singuar": {
-            "nominative": "rēx",
-            "genetive": "rēgis",
-            "dative": "rēgī",
-            "accusative": "rēgem",
-            "ablative": "rēge"
-          },
-          "plural": {
-            "nominative": "rēgēs",
-            "genetive": "rēgum",
-            "dative": "rēgibus",
-            "accusative": "rēgēs",
-            "ablative": "rēgibus"
-          }
-        }
-      },
-
-      {
-        "word": "city",
-        "declension": "third",
-        "gender": "feminine",
-        "type": "noun",
-        "conjugations": {
-          "singular": {
-            "nominative": "urbs",
-            "genetive": "urbis",
-            "dative": "urbī",
-            "accusative": "urbem",
-            "ablative": "urbe"
-          },
-          "plural": {
-            "nominative": "urbēs",
-            "genetive": "urbium",
-            "dative": "urbibus",
-            "accusative": "urbīs/urbēs",
-            "ablative": "urbibus"
           }
         }
       }

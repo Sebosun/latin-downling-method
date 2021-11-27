@@ -9,7 +9,7 @@ const nouns: any = {
       type: "noun",
       declension: "first",
       gender: "femine",
-      conjugation: {
+      conjugations: {
         singular: {
           nominative: "rosa",
           genetive: "rosae",
@@ -31,7 +31,7 @@ const nouns: any = {
       type: "noun",
       declension: "first",
       gender: "feminie",
-      conjugation: {
+      conjugations: {
         singular: {
           nominative: "puella",
           genetive: "puellae",
@@ -55,7 +55,7 @@ const nouns: any = {
       type: "noun",
       declension: "third",
       gender: "neuter",
-      conjugation: {
+      conjugations: {
         singular: {
           nominative: "corpus	",
           genetive: "corporis",
@@ -79,7 +79,7 @@ const nouns: any = {
       type: "noun",
       declension: "third",
       gender: "feminine",
-      conjugation: {
+      conjugations: {
         singular: {
           nominative: "ovis",
           genetive: "ovis",
@@ -101,7 +101,7 @@ const nouns: any = {
       type: "noun",
       declension: "third",
       gender: "masculine",
-      conjugation: {
+      conjugations: {
         singular: {
           nominative: "rēx",
           genetive: "rēgis",
@@ -140,5 +140,6 @@ export default function FetchData(): ReactElement | null {
   useEffect(() => {
     getRandomNoun();
   }, []);
+
   return null;
 }
