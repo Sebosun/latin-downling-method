@@ -36,7 +36,7 @@ export default function Options(): ReactElement | null {
   const keys: string[] = Object.keys(parsed.nouns);
 
   return (
-    <main className="w-full max-h-96  bg-gray-100 rounded-2xl shadow-l text-gray-800 p-4 max-w-xs lg:max-w-l">
+    <main className="w-full   bg-gray-100 rounded-2xl shadow-l text-gray-800 p-4">
       <div className="flex flex-col">
         {keys.map((item) => {
           return (
@@ -51,7 +51,6 @@ export default function Options(): ReactElement | null {
           );
         })}
       </div>
-      <Link to="/"> Main </Link>
     </main>
   );
 }

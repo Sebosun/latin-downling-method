@@ -15,7 +15,11 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  variants: {
+    extend: {
+      border: ["hover"],
+    },
+  },
   plugins: [],
   purge: {
     // Filenames to scan for classes

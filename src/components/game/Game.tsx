@@ -16,7 +16,7 @@ export default function Game() {
   const dispatch = useAppDispatch();
 
   const [round, setRound] = useState(0);
-  const [full, setFull] = useState(true);
+  const [noErrorsMade, setNoErrorsMade] = useState(true);
   const [answer, setAnswer] = useState({ case: "", answer: "", number: "" });
   const [showAnswer, setShowAnswer] = useState(false);
 
@@ -29,9 +29,9 @@ export default function Game() {
       const answer =
         data.conjugations.plural[currentCase as keyof ConjugationTypes];
       setAnswer({ case: currentCase, answer: answer, number: "singular" });
-      full && dispatch(addComplete());
+      noErrorsMade && dispatch(addComplete());
       setRound(0);
-      setFull(true);
+      setNoErrorsMade(true);
     } else if (round >= 5) {
       const currentCase = Object.keys(data.conjugations.plural)[round - 5];
       const answer =
@@ -61,7 +61,7 @@ export default function Game() {
       //if we fail / click to reveal an answer
     } else {
       setShowAnswer(true);
-      setFull(false);
+      setNoErrorsMade(false);
       dispatch(addError());
     }
 
