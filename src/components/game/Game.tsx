@@ -16,6 +16,7 @@ export default function Game() {
   const dispatch = useAppDispatch();
 
   const [round, setRound] = useState(0);
+  const ref = useRef<HTMLInputElement | null>(null);
   const [noErrorsMade, setNoErrorsMade] = useState(true);
   const [answer, setAnswer] = useState({ case: "", answer: "", number: "" });
   const [showAnswer, setShowAnswer] = useState(false);
@@ -24,10 +25,11 @@ export default function Game() {
   // some function to calculate number of rounds later
   // if then rounds end load another word/restart
   useEffect(() => {
+    console.log(round, answer);
     if (round >= 10) {
       const currentCase = Object.keys(data.conjugations.singular)[0];
       const answer =
-        data.conjugations.plural[currentCase as keyof ConjugationTypes];
+        data.conjugations.singular[currentCase as keyof ConjugationTypes];
       setAnswer({ case: currentCase, answer: answer, number: "singular" });
       noErrorsMade && dispatch(addComplete());
       setRound(0);
@@ -40,7 +42,7 @@ export default function Game() {
     } else {
       const currentCase = Object.keys(data.conjugations.singular)[round];
       const answer =
-        data.conjugations.plural[currentCase as keyof ConjugationTypes];
+        data.conjugations.singular[currentCase as keyof ConjugationTypes];
       setAnswer({ case: currentCase, answer: answer, number: "singular" });
     }
   }, [round, data]);
@@ -85,6 +87,8 @@ export default function Game() {
   const addInput = (char: "ā" | "ē" | "ī" | "ō" | "ū") => {
     // error checking on max lenght but rn its whatever
     setTextInput((prev) => prev.concat(char));
+
+    ref.current && ref.current.focus();
   };
 
   return (
@@ -106,6 +110,7 @@ export default function Game() {
           value={textInput}
           onChange={onTextChange}
           type="text"
+          ref={ref}
         />
         <SpecialCharacters addInput={addInput} />
         <button
