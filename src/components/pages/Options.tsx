@@ -1,5 +1,4 @@
 import { ReactElement, useState } from "react";
-import { Link } from "react-router-dom";
 import conjugations from "../../conjugations.json";
 import { useAppDispatch } from "../../store/hooks";
 import { changeWord } from "../../store/slices/game";
@@ -35,6 +34,7 @@ export default function Options(): ReactElement | null {
   const parsed: NounsObject = conjugations;
   const keys: string[] = Object.keys(parsed.nouns);
 
+  console.log(parsed, keys);
   return (
     <main className="w-full   bg-gray-100 rounded-2xl shadow-l text-gray-800 p-4">
       <div className="flex flex-col">
@@ -68,13 +68,14 @@ const DisplayMore = ({ name, item }: DisplayTypes): ReactElement => {
   };
 
   const mapped = item?.map((item) => {
-    return <li onClick={(e) => setAsCurrent(item)}>{item.word}</li>;
+    return <li onClick={() => setAsCurrent(item)}>{item.word}</li>;
   });
 
   const handleShow = () => {
     setShow((prev) => !prev);
   };
 
+  console.log(name);
   return (
     <>
       <button

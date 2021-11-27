@@ -6,7 +6,7 @@ import FetchData from "./FetchData";
 
 function App() {
   return (
-    <div className="flex flex-col items-center justify-center h-full  bg-gray-300">
+    <div className="flex flex-col items-center justify-center h-full bg-gray-300">
       <div className="w-full max-w-xs lg:max-w-lg">
         <Routes>
           <Route path="/" element={<Main />} />
