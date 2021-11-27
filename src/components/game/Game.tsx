@@ -82,7 +82,7 @@ export default function Game() {
     setTextInput(e.target.value);
   };
 
-  const addInput = (char: "ā" | "ē" | "ī" | "ō") => {
+  const addInput = (char: "ā" | "ē" | "ī" | "ō" | "ū") => {
     // error checking on max lenght but rn its whatever
     setTextInput((prev) => prev.concat(char));
   };

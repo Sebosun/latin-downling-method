@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 
 interface SpecialCharactersTypes {
-  addInput: (char: "ā" | "ē" | "ī" | "ō") => void;
+  addInput: (char: "ā" | "ē" | "ī" | "ō" | "ū") => void;
 }
 
 export default function SpecialCharacters({
@@ -11,31 +11,38 @@ export default function SpecialCharacters({
     <div className="flex flex-wrap  justify-between ">
       <button
         type="button"
-        className="text-xl border-2 rounded-xl w-12 hover:bg-sky-300 border-black p-1"
+        className="text-2xl border-2 rounded-xl w-12 hover:bg-sky-300 border-black p-1"
         onClick={() => addInput("ā")}
       >
         ā
       </button>
       <button
         type="button"
-        className="text-xl border-2 rounded-xl w-12 hover:bg-sky-300 border-black p-1"
+        className="text-2xl border-2 rounded-xl w-12 hover:bg-sky-300 border-black p-1"
         onClick={() => addInput("ē")}
       >
         ē
       </button>
       <button
         type="button"
-        className="text-xl border-2 rounded-xl w-12 hover:bg-sky-300 border-black p-1"
+        className="text-2xl border-2 rounded-xl w-12 hover:bg-sky-300 border-black p-1"
         onClick={() => addInput("ī")}
       >
         ī
       </button>
       <button
         type="button"
-        className="text-xl border-2 rounded-xl w-12 hover:bg-sky-300 border-black p-1"
+        className="text-2xl border-2 rounded-xl w-12 hover:bg-sky-300 border-black p-1"
         onClick={() => addInput("ō")}
       >
         ō
+      </button>
+      <button
+        type="button"
+        className="text-2xl border-2 rounded-xl w-12 hover:bg-sky-300 border-black p-1"
+        onClick={() => addInput("ū")}
+      >
+        ū
       </button>
     </div>
   );
