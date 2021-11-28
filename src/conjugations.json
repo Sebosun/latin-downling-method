@@ -73,7 +73,7 @@
             "genetive": "amīcī",
             "dative": "amīcō",
             "accusative": "amīcum",
-            "ablative": "amcō",
+            "ablative": "amīcō",
             "vocative": "amīce"
           },
           "plural": {
@@ -329,6 +329,61 @@
             "dative": "rēbus",
             "accusative": "rēs",
             "ablative": "rēbus"
+          }
+        }
+      }
+    ]
+  },
+  "pronouns": {
+    "demonstratives": [
+      {
+        "word": "this",
+        "masculine": {
+          "singular": {
+            "nominative": "hic",
+            "genetive": "hujus",
+            "dative": "huic",
+            "accusative": "hunc",
+            "ablative": "hōc"
+          },
+          "plural": {
+            "nominative": "hī",
+            "genetive": "hōrum",
+            "dative": "hīs",
+            "accusative": "hōs",
+            "ablative": "hīs"
+          }
+        },
+        "feminine": {
+          "singular": {
+            "nominative": "haec",
+            "genetive": "hujus",
+            "dative": "huic",
+            "accusative": "hanc",
+            "ablative": "hāc"
+          },
+          "plural": {
+            "nominative": "hae",
+            "genetive": "hārum",
+            "dative": "hīs",
+            "accusative": "hās",
+            "ablative": "hīs"
+          }
+        },
+        "neuter": {
+          "singular": {
+            "nominative": "hoc",
+            "genetive": "hujus",
+            "dative": "huic",
+            "accusative": "hoc",
+            "ablative": "hōc"
+          },
+          "plural": {
+            "nominative": "haec",
+            "genetive": "hōrum",
+            "dative": "hīs",
+            "accusative": "haec",
+            "ablative": "hīs"
           }
         }
       }

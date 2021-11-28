@@ -30,13 +30,34 @@ export interface ConjugationTypes {
   ablative: string;
 }
 
+export interface PronounsObject {
+  demonstratives: Pronoun[];
+  interrogatives: Pronoun[];
+}
+
+export interface Pronoun {
+  name: string;
+  masculine: {
+    singular: ConjugationTypes;
+    plural: ConjugationTypes;
+  };
+  feminine: {
+    singular: ConjugationTypes;
+    plural: ConjugationTypes;
+  };
+  neuter: {
+    singular: ConjugationTypes;
+    plural: ConjugationTypes;
+  };
+}
+
 export default function Options(): ReactElement | null {
   const parsed: NounsObject = conjugations;
   const keys: string[] = Object.keys(parsed.nouns);
 
   console.log(parsed, keys);
   return (
-    <main className="w-full   bg-gray-100 rounded-2xl shadow-l text-gray-800 p-4">
+    <main className="w-full   max-h-96 overflow-y-auto bg-gray-100 rounded-2xl shadow-l text-gray-800 p-4">
       <div className="lg:flex  gap-5 text-2xl justify-center">
         {keys.map((item) => {
           return (

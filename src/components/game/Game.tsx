@@ -49,6 +49,7 @@ export default function Game() {
 
   const submitLogic = () => {
     // if the answer was correct
+    ref.current && ref.current.focus();
     if (textInput.trim() === answer.answer.trim()) {
       // if we failed/revealed an answer already
       if (showAnswer) {
