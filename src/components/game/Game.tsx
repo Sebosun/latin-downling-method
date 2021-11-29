@@ -1,26 +1,29 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { addError, addSuccess, addComplete } from "../../store/slices/stats";
+import {
+  addError,
+  addSuccess,
+  addPerfect,
+  addSets,
+} from "../../store/slices/stats";
 import { ConjugationTypes } from "../pages/Options";
 import SpecialCharacters from "../wrappers/SpecialCharacters";
 import Question from "./Question";
 
 export default function Game() {
-  const [textInput, setTextInput] = useState("");
-
   // TODO settings somewhere to:
   // disable space to show the answer (change text then maybe)
   // being more forgvigin wiht the ī ō etc.
+  const [textInput, setTextInput] = useState("");
+  const [round, setRound] = useState(0);
+  const [answer, setAnswer] = useState({ case: "", answer: "", number: "" });
+  const [showAnswer, setShowAnswer] = useState(false);
+  const [noErrorsMade, setNoErrorsMade] = useState(true);
+
+  const ref = useRef<HTMLInputElement | null>(null);
 
   const data = useAppSelector((state) => state.game.currentWord);
   const dispatch = useAppDispatch();
-
-  const [round, setRound] = useState(0);
-  const ref = useRef<HTMLInputElement | null>(null);
-  const [noErrorsMade, setNoErrorsMade] = useState(true);
-  const [answer, setAnswer] = useState({ case: "", answer: "", number: "" });
-  const [showAnswer, setShowAnswer] = useState(false);
-
   // runs on new rounds
   // some function to calculate number of rounds later
   // if then rounds end load another word/restart
@@ -31,9 +34,8 @@ export default function Game() {
       const answer =
         data.conjugations.singular[currentCase as keyof ConjugationTypes];
       setAnswer({ case: currentCase, answer: answer, number: "singular" });
-      noErrorsMade && dispatch(addComplete());
+      roundEndHandler();
       setRound(0);
-      setNoErrorsMade(true);
     } else if (round >= 5) {
       const currentCase = Object.keys(data.conjugations.plural)[round - 5];
       const answer =
@@ -46,6 +48,13 @@ export default function Game() {
       setAnswer({ case: currentCase, answer: answer, number: "singular" });
     }
   }, [round, data]);
+
+  // handles non-game-logic related states at the end of the round
+  const roundEndHandler = () => {
+    noErrorsMade && dispatch(addPerfect());
+    dispatch(addSets());
+    setNoErrorsMade(true);
+  };
 
   const submitLogic = () => {
     // if the answer was correct
@@ -88,7 +97,6 @@ export default function Game() {
   const addInput = (char: "ā" | "ē" | "ī" | "ō" | "ū") => {
     // error checking on max lenght but rn its whatever
     setTextInput((prev) => prev.concat(char));
-
     ref.current && ref.current.focus();
   };
 
