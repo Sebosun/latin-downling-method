@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { NounTypes } from "../../components/pages/Options";
+import { NounTypes } from "../../components/game/options/GameOptions";
 
 interface initialState {
   currentWord: NounTypes;

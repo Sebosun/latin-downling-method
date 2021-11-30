@@ -7,7 +7,7 @@ import FetchData from "./FetchData";
 function App() {
   return (
     <div className="flex flex-col items-center justify-center h-full bg-gray-300">
-      <div className="w-full max-w-xs lg:max-w-lg">
+      <div className="w-full max-w-md lg:max-w-xl">
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/options" element={<Options />} />
