@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import About from "./components/pages/About";
 import Main from "./components/pages/Main";
 import Options from "./components/pages/Options";
 import Navigation from "./components/ui/Navigation";
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/options" element={<Options />} />
+          <Route path="/about" element={<About />} />
         </Routes>
         <FetchData />
         <Navigation />

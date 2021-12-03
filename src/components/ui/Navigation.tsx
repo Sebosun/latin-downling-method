@@ -16,6 +16,12 @@ export default function Navigation(): ReactElement | null {
       >
         Options
       </Link>
+      <Link
+        className="border-transparent border-b-2 hover:border-sky-800 p-8 "
+        to="/about"
+      >
+        About
+      </Link>
     </nav>
   );
 }
