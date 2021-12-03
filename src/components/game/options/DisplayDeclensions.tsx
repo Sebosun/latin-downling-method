@@ -13,7 +13,6 @@ export default function DisplayMore({ name, item }: DisplayTypes) {
   const dispatch = useAppDispatch();
 
   const setAsCurrent = (item: NounTypes) => {
-    console.log(item);
     dispatch(changeWord(item));
   };
 

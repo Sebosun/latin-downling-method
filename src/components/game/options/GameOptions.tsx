@@ -50,14 +50,16 @@ export interface Pronoun {
   };
 }
 
+// responsible for displaying all the conjugations available to the user
 export default function GameOptions(): ReactElement | null {
   const parsed: NounsObject = conjugations;
-  const keys: string[] = Object.keys(parsed.nouns);
+  const nounKeys: string[] = Object.keys(parsed.nouns);
 
   return (
-    <main className="w-full   max-h-96 overflow-y-auto bg-gray-100 rounded-2xl shadow-l text-gray-800 p-4">
+    <main className="w-full max-h-96 overflow-y-auto bg-gray-100 rounded-2xl shadow-l text-gray-800 p-4">
+      <p className="text-xl mx-4 leading-loose">Nouns:</p>
       <div className="lg:flex  gap-5 text-2xl justify-center">
-        {keys.map((item) => {
+        {nounKeys.map((item) => {
           return (
             <ul>
               <li>
