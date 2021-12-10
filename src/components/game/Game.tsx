@@ -131,7 +131,7 @@ export default function Game() {
 
       <form onSubmit={submitForm} className="flex flex-col">
         <input
-          className="p-3 mt-4 mb-6 text-gray-600 border-2 border-black rounded-md focus-within:border-gray-200"
+          className="p-3 mt-4 mb-6 text-2xl text-center text-gray-600 border-2 border-black rounded-md focus-within:border-gray-200"
           autoFocus
           maxLength={25}
           value={textInput}
