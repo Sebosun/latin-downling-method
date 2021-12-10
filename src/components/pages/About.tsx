@@ -1,9 +1,10 @@
 import React, { ReactElement } from "react";
+import MotionMain from "../ui/MotionMain";
 
 export default function About(): ReactElement | null {
   return (
-    <main className="wrapper max-w-md">
-      <p className="text-xl  text-justify">
+    <MotionMain>
+      <p className="text-xl text-justify">
         You can read more about the Downling method{" "}
         <span>
           <a
@@ -12,9 +13,9 @@ export default function About(): ReactElement | null {
           >
             here
           </a>
-        </span>{" "}
+        </span>
         (it's an ancient site, not really suit for mobile)
       </p>
-    </main>
+    </MotionMain>
   );
 }

@@ -10,6 +10,7 @@ import {
 import { ConjugationTypes } from "./options/GameOptions";
 import SpecialCharacters from "../wrappers/SpecialCharacters";
 import Question from "./Question";
+import { motion } from "framer-motion";
 
 export default function Game() {
   // TODO settings somewhere to:
@@ -123,12 +124,12 @@ export default function Game() {
           ref={ref}
         />
         <SpecialCharacters addInput={addInput} />
-        <button
+        <motion.button
           type="submit"
           className="p-2 my-6 text-2xl border-2 border-black border-solid rounded-md"
         >
           Check
-        </button>
+        </motion.button>
       </form>
     </div>
   );
