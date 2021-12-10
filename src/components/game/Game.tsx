@@ -103,7 +103,23 @@ export default function Game() {
   };
 
   return (
-    <div>
+    <motion.div
+      initial={showAnswer && { opacity: 1 }}
+      animate={
+        showAnswer
+          ? {
+              x: [-10, 10, -10, 10, 0],
+              y: [-1, 1, -1, 1, 0],
+              opacity: 1,
+              borderColor: "red",
+            }
+          : {
+              x: 0,
+              opacity: 1,
+            }
+      }
+      transition={{ duration: 0.2 }}
+    >
       <Question
         case={answer.case}
         number={answer.number}
@@ -126,11 +142,13 @@ export default function Game() {
         <SpecialCharacters addInput={addInput} />
         <motion.button
           type="submit"
-          className="p-2 my-6 text-2xl border-2 border-black border-solid rounded-md"
+          className={`${
+            showAnswer && "border-red-500 text-red-500"
+          } p-2 my-6 text-2xl border-2 border-black border-solid rounded-md`}
         >
           Check
         </motion.button>
       </form>
-    </div>
+    </motion.div>
   );
 }
