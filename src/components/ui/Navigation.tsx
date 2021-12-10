@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Navigation(): ReactElement | null {
   return (
-    <nav className=" flex justify-around  text-2xl  ">
+    <nav className="justify-center flex justify-around  text-2xl  ">
       <Link
         className="border-transparent border-b-2 hover:border-sky-800 p-8 "
         to="/"

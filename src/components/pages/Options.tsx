@@ -3,8 +3,8 @@ import GameOptions from "../game/options/GameOptions";
 
 export default function Options(): ReactElement | null {
   return (
-    <main className="wrapper">
-      <GameOptions />;
+    <main className="min-w-full wrapper">
+      <GameOptions />
     </main>
   );
 }

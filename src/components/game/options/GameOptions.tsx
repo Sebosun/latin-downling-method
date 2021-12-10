@@ -58,7 +58,7 @@ export default function GameOptions(): ReactElement | null {
   return (
     <>
       <p className="text-xl mx-4 leading-loose">Nouns:</p>
-      <div className="lg:flex  gap-5 text-2xl justify-center">
+      <div className="flex flex-wrap  gap-5 text-2xl justify-center">
         {nounKeys.map((item) => {
           return (
             <ul>

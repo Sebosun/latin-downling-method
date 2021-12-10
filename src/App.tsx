@@ -7,16 +7,18 @@ import FetchData from "./FetchData";
 
 function App() {
   return (
-    <div className="flex flex-col items-center justify-center h-full bg-gray-300">
-      <div className="w-full max-w-md p-4 md:max-w-xl">
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/options" element={<Options />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-        <FetchData />
+    <div className="h-full">
+      <div className="grid grid-rows-main items-center justify-items-center h-full ">
+        <div className="w-5/6	 md:w-2/6">
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/options" element={<Options />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </div>
         <Navigation />
       </div>
+      <FetchData />
     </div>
   );
 }

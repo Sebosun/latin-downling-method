@@ -102,7 +102,7 @@ export default function Game() {
   };
 
   return (
-    <>
+    <div>
       <Question
         case={answer.case}
         number={answer.number}
@@ -130,6 +130,6 @@ export default function Game() {
           Check
         </button>
       </form>
-    </>
+    </div>
   );
 }

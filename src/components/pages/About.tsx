@@ -2,8 +2,8 @@ import React, { ReactElement } from "react";
 
 export default function About(): ReactElement | null {
   return (
-    <main className="wrapper overflow-y-auto max-h-110">
-      <p className="text-xl font-thin text-justify">
+    <main className="wrapper max-w-md">
+      <p className="text-xl  text-justify">
         You can read more about the Downling method{" "}
         <span>
           <a

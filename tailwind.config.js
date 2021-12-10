@@ -6,6 +6,9 @@ module.exports = {
   // mode: "jit",
   theme: {
     extend: {
+      gridTemplateRows: {
+        main: "1fr min-content",
+      },
       colors: {
         orange: colors.orange,
         yellow: colors.amber,
