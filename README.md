@@ -9,3 +9,4 @@ Technologies used:
 - Typescript
 - Redux
 - React Router v6
+- Framer Motion
